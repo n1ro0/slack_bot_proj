@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+     <form method="post" enctype="multipart/form-data" action="{% url 'logout' %}">
+     {% csrf_token %}
+     <input type="submit" value="Logout"/>
+     </form>
+{% endblock %}

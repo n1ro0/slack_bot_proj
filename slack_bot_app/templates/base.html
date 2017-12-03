@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SLack bot</title>
+    <link rel="stylesheet" href="{% static 'slack_bot_app/bootstrap-3.3.7-dist/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'slack_bot_app/bootstrap-3.3.7-dist/css/bootstrap-theme.css' %}"/>
+    <script src="{% static 'slack_bot_app/jquery-3.2.1.js' %}"></script>
+    <script src="{% static 'slack_bot_app/bootstrap-3.3.7-dist/js/bootstrap.js' %}"></script>
+    <script src="{% static 'slack_bot_app/js/navigations.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'slack_bot_app/styles/basestyles.css' %}"/>
+
+</head>
+<body>
+    {% block header %}
+
+        <header >
+            {% if user.is_authenticated %}
+                Welcome, {{ user.username }}.
+                <a href="/accounts/profile"><span class="glyphicon glyphicon-user"></span></a>
+                <a href="/accounts/logout/"><span class="glyphicon glyphicon-log-out"></span></a>
+            {% else %}
+                Welcome, new user. Please
+                <a href="/accounts/login/"> log in</a>
+                .
+                <a href="/accounts/register/">Sign up </a>
+                <a href="/accounts/login/"><span class="glyphicon glyphicon-log-in"></span></a>
+            {% endif %}
+         </header>
+
+    {% endblock %}
+    <nav class="navbar navbar-inverse">
+    {% block nav %}
+        <ul class="nav nav-pills" role="tablist">
+              <li role="presentation" class="active"><a href="/">Main <span class="badge">{{ carads_count }}</span></a></li>
+              <li role="presentation"><a href="/bot/connections/">Connections <span class="badge">{{ categories_count }}</span></a></li>
+        </ul>
+    {% endblock %}
+    </nav>
+    <article>
+    {% block content %}
+    {% endblock %}
+    </article>
+
+        {% block footer %}
+
+             <footer class="col-md-12 footer">
+                &copy; 2017 Slack_bot_proj. All rights reserved.
+             </footer>
+
+        {% endblock %}
+</body>
+</html>

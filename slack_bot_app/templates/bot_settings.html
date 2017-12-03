@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="centered">
+    <a href="https://slack.com/oauth/authorize?scope={{ scope }}
+        &client_id=279748957570.279679048819&redirect_uri={{ client_id }}
+        &redirect_uri={{ redirect_uri }}
+        &state={{ state }}">
+            <img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png"
+                 srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" />
+    </a>
+</section>
+{% for botconnection in bot_connections %}
+       <div class="row">
+            <div class="thumbnail col-sm-10 col-md-8 col-lg-4 col-sm-offset-1 col-md-offset-2 col-lg-offset-4">
+                <p>
+                    <a href="/bot/connections/{{ botconnection.id }}/messages/">
+                       BotConnectionMessages
+                    </a>
+                </p>
+                <p><b>admin:</b> {{ botconnection.admin }}</p>
+                <p><b>team_id:</b> {{ botconnection.team_id }}</p>
+                <p><b>channel_id:</b> {{ botconnection.channel_id }}</p>
+                <p><b>access_token:</b> {{ botconnection.access_token }}</p>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p>
+                        <select name="usernames[]" multiple="multiple">
+                            {% for user in users %}
+                                <option value="{{ user.username }}">{{ user.username }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="hidden" name="id" value="{{ botconnection.id }}"/><br/>
+                        <input type="submit" class="btn btn-success" value="Invite"/>
+                    </p>
+                </form>
+                <a href="/bot/connections/{{ botconnection.id }}/" class="btn btn-primary" role="button">Update</a>
+            </div>
+       </div>
+{% endfor %}
+<section class="centered">
+    <p>
+        <b>Connections where you are moderator:</b>
+    </p>
+<section class="centered">
+{% for botconnection in moderated_connections %}
+        <p>
+            <a href="/bot/connections/{{ botconnection.id }}/messages/">
+               BotConnectionMessages of team {{ botconnection.team_id }}
+            </a>
+        </p>
+{% endfor %}
+</section>
+{% endblock %}

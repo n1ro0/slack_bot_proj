@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="centered">
+        {% block create_info %}
+        {% endblock %}
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary" value="OK"/>
+            </form>
+    </section>
+{% endblock %}

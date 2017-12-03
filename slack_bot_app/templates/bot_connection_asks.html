@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for message in bot_messages %}
+        <div class="row">
+            <div class="thumbnail col-sm-10 col-md-8 col-lg-4 col-sm-offset-1 col-md-offset-2 col-lg-offset-4">
+                        <p>
+                <a href="/bot/connections/messages/{{ message.id }}/replies/">
+                   BotMessageReplies
+                </a>
+            </p>
+            <p><b>bot_connection:</b> {{ message.bot_connection }}</p>
+            <p><b>sender_id:</b> {{ message.sender_id }}</p>
+            <p><b>ts:</b> {{ message.ts }}</p>
+            <p><b>text:</b> {{ message.text }}</p>
+            </div>
+        </div>
+{% endfor %}
+{% endblock %}

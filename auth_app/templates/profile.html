@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+        <div class="row">
+            <div class="thumbnail col-sm-8 col-md-6 col-lg-2 col-sm-offset-2 col-md-offset-3 col-lg-offset-5">
+                        <img src="{{ profile.photo.url }}"/><br/>
+                        <p><b>Name:</b> {{profile.name}}</p>
+                        <p><b>Surname:</b> {{profile.surname}}</p>
+                        <p>
+                            <a href="/accounts/profile/update/" class="btn btn-primary" role="button">Update</a>
+                        </p>
+            </div>
+        </div>
+
+{% endblock %}

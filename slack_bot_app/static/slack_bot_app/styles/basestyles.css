@@ -1,0 +1,33 @@
+header {
+    text-align:right;
+    padding: 20px 40px;
+    background-color: #d58512;
+}
+footer {
+    text-align:right;
+    padding: 20px 40px;
+    background-color: #d58512;
+    text-size: 80%;
+}
+div.h1div{
+    text-align: center;
+}
+div.h1div > h1 {
+    display: inline-block;
+    margin-bottom: 35px;
+    padding: 25px;
+    border: 4px dashed #d58512;
+    text-size: 130%;
+}
+div.content{
+    padding: 0px 50px;
+}
+section.centered{
+    text-align: center;
+    align-content: center;
+    margin: 25px;
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

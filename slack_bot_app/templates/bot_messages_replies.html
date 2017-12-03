@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for botreply in bot_replies %}
+    <div class="row">
+            <div class="thumbnail col-sm-10 col-md-8 col-lg-4 col-sm-offset-1 col-md-offset-2 col-lg-offset-4">
+                <p><b>bot_message: {{ botreply.bot_message }}</b></p>
+                <p><b>sender_id:</b> {{ botreply.sender_id }}</p>
+                <p><b>ts:</b> {{ botreply.ts }}</p>
+                <p><b>text:</b> {{ botreply.text }}</p>
+            </div>
+    </div>
+{% endfor %}
+{% endblock %}
